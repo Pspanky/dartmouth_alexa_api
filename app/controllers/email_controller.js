@@ -6,7 +6,7 @@ const smtpTransport = require('nodemailer-smtp-transport');
 const transporter = nodemailer.createTransport(smtpTransport({
   service: 'Gmail',
   auth: {
-    user: 'no-reply@gmail.com',
+    user: 'no-reply@halendr.com',
     pass: 'PaulisaQT!',
   },
 }),
@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport(smtpTransport({
 export const sendEmail = (req, res) => {
   console.log(req.body.email);
   transporter.sendMail({
-    from: 'no-reply@gmail.com',
+    from: 'no-reply@halendr.com',
     to: req.body.email,
     subject: 'Welcome to Halendr!',
     html: '<b>hello world!</b>',
@@ -25,11 +25,10 @@ export const sendEmail = (req, res) => {
 
   newUser.email = 'paulspangfort@gmail.com';
 
-
-  console.log('does sendEmail function reach here?');
+  console.log('Email was sent');
 
   newUser.save().then((addedUser) => {
-    console.log('in te ten');
+    console.log('User added to database');
     res.send(addedUser);
   })
   .catch((err) => {
