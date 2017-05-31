@@ -33,6 +33,8 @@ app.get('/', (req, res) => {
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/emails';
 mongoose.connect(mongoURI);
 
+console.log(' ');
+
 const port = process.env.PORT || 9090;
 app.listen(port);
 
