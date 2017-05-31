@@ -23,7 +23,8 @@
     "express-mailer": "^0.3.1",
     "mongoose": "^4.10.3",
     "nodemailer": "^4.0.1",
-    "nodemailer-smtp-transport": "^2.7.4"
+    "nodemailer-smtp-transport": "^2.7.4",
+    "styliner": "^1.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
