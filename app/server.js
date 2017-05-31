@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
+import mongoose from 'mongoose';
+import apiRouter from './router';
 
 // initialize
 const app = express();
@@ -19,6 +21,7 @@ app.set('views', path.join(__dirname, '../app/views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+mongoose.Promise = global.Promise;
 
 // default index route
 app.get('/', (req, res) => {
@@ -27,7 +30,14 @@ app.get('/', (req, res) => {
 
 // START THE SERVER
 // =============================================================================
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/emails';
+mongoose.connect(mongoURI);
+
 const port = process.env.PORT || 9090;
 app.listen(port);
+
+
+app.use('/', apiRouter);
+
 
 console.log(`listening on: ${port}`);
