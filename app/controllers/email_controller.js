@@ -7,20 +7,20 @@ const smtpTransport = require('nodemailer-smtp-transport');
 const transporter = nodemailer.createTransport(smtpTransport({
   service: 'Gmail',
   auth: {
-    user: 'halendrtesting@gmail.com',
-    pass: 'Tooshort',
+    user: 'no-reply@halendr.com',
+    pass: 'PaulisaQT!',
   },
 }),
 );
 
 
-export const sendEmail = (req, res) => {
+export const sendEmail = (req, res, history) => {
   console.log(req.body.email);
   transporter.sendMail({
-    from: 'halendrtesting@gmail.com',
+    from: 'no-reply@halendr.com',
     to: req.body.email,
-    subject: 'Welcome to Halendr!',
-    html: '<div style="width:700px; background-color:white; font-family: sans-serif"><div style="text-align:center"><b>Confirm your registration</b></div><br><div style="text-align:center">Thanks for signing up. We look forward to connecting you to the things around you.</div><br><br><div></div><div><div><b>Didn’t sign up? </b></div>If you didn’t sign up for an account on Halendr, please let us know.<div></div></div><br><br><div style="text-align:center">We hope you enjoy your experience on Halendr. If you need help using Halendr, please visit our Help Centre. You can also contact us or report a problem, here.</div></div>',
+    subject: 'Halendr Registration Confirmed!',
+    html: '<div style="width:700px; background-color:white; font-family: sans-serif"><img src="https://s11.postimg.org/bw1ik7qpf/Halendr_Logo_1.png" style="width: 260px; display: block; margin: auto" /><br/><br/><br/><div style="text-align:center"><b>Registration Confirmed!</b></div><br/><div style="text-align:center">Thank you for signing up. We look forward to connecting you to the things you love.</div><br/><br/><div></div><div style="position: relative; left: 20px;"><div ><b>Didn’t sign up? </b></div>If you didn’t sign up for an account on Halendr, please let us know.<div></div></div><br/><br/><div style="text-align:center">We hope you enjoy your experience on Halendr. If you need help using Halendr, please visit our Help Centre.</div><br/><div style="width: 80%; height: 1px; background-color: rgba(255,65,43, 0.4); margin: auto;"></div></div>',
   });
 
   const newUser = new User();
