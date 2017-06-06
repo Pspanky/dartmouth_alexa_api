@@ -1,9 +1,14 @@
 import mongoose, { Schema } from 'mongoose';
 
 const userSchema = new Schema({
-  email: String,
-});
+  email: { type: String, unique: true },
+}, {
+  toJSON: {
+    virtuals: true,
+  },
+},
+);
 
-const userModel = mongoose.model('user', userSchema);
+const userModel = mongoose.model('User', userSchema);
 
 export default userModel;

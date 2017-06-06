@@ -14,6 +14,7 @@ app.use(cors());
 app.set('view engine', 'ejs');
 app.use(express.static('static'));
 // enables static assets from folder static
+
 app.set('views', path.join(__dirname, '../app/views'));
 // this just allows us to render ejs from the ../app/views directory
 
@@ -30,8 +31,9 @@ app.get('/', (req, res) => {
 
 // START THE SERVER
 // =============================================================================
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/emails';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/users';
 mongoose.connect(mongoURI);
+
 
 console.log(' ');
 
