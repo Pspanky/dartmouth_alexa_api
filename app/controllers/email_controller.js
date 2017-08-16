@@ -1,8 +1,8 @@
 import User from '../models/user_model';
+import Candidate from '../models/candidate_model';
 
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
-
 
 const transporter = nodemailer.createTransport(smtpTransport({
   service: 'Gmail',
@@ -43,6 +43,36 @@ export const sendEmail = (req, res, history) => {
       });
 
       newUser.save().then((addedUser) => {
+        console.log('User added to database');
+        res.send(addedUser);
+      });
+    }
+  });
+};
+
+export const sendCandidateEmail = (req, res, history) => {
+  console.log(req.body.email);
+
+  const newCandidate = new Candidate();
+  newCandidate.email = req.body.email;
+  console.log(newCandidate);
+
+  Candidate.find({ email: req.body.email }).then((response) => {
+    console.log(response);
+    // Check if user exists already
+    if (response.length > 0) {
+      res.send('user already exists');
+    } else {
+      // send confirmation email to ourselves
+      transporter.sendMail({
+        from: 'no-reply@halendr.com',
+        to: 'no-reply@halendr.com',
+        subject: 'New Candidate Registered',
+        text: req.body.email,
+      });
+
+      // save new candidate to database
+      newCandidate.save().then((addedUser) => {
         console.log('User added to database');
         res.send(addedUser);
       });

@@ -7,5 +7,7 @@ const router = Router();
 router.route('/')
   .post(Mails.sendEmail);
 
+router.route('/candidates')
+  .post(Mails.sendCandidateEmail);
 
 export default router;
