@@ -26,12 +26,12 @@ mongoose.Promise = global.Promise;
 
 // default index route
 app.get('/', (req, res) => {
-  res.send('hi');
+  res.send('Database is up and running!');
 });
 
 // START THE SERVER
 // =============================================================================
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/users';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/specials';
 mongoose.connect(mongoURI);
 
 

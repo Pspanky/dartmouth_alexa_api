@@ -1,13 +1,17 @@
 import { Router } from 'express';
-import * as Mails from './controllers/email_controller';
+import * as Specials from './controllers/special_controller';
 
 
 const router = Router();
 
-router.route('/')
-  .post(Mails.sendEmail);
+router.route('/specials')
+  .post(Specials.createSpecial)
+  .get(Specials.findSpecialsByDateAndLocation);
 
-router.route('/candidates')
-  .post(Mails.sendCandidateEmail);
+router.route('/test')
+.get(Specials.testGet);
+
+router.route('/collis')
+.get(Specials.collisGet);
 
 export default router;
