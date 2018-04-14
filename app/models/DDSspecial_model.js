@@ -5,6 +5,7 @@ const specialSchema = new Schema({
   location: String,
   ingredients: [String],
   meal: String,
+  type: { type: String, default: 'special' },
   date: { type: Date, default: Date.now() },
 }, {
   toJSON: {
