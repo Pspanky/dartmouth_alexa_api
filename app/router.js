@@ -14,4 +14,7 @@ router.route('/test')
 router.route('/collis')
 .get(Specials.collisGet);
 
+router.route('/collistoday')
+.get(Specials.collisTodayGet);
+
 export default router;

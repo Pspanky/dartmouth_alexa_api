@@ -54,3 +54,47 @@ export const collisGet = (req, res) => {
     res.status(500).json({ err: 'error' });
   });
 };
+
+export const collisTodayGet = (req, res) => {
+  const now = Date.now();
+  const currDate = now.getDate();
+  const currMonth = now.getMonth();
+  const currYear = now.getFullYear();
+  const today = Date(currYear, currMonth, currDate);
+  const tomorrow = Date(currYear, currMonth, currDate + 1);
+
+  Special.find({ location: 'collis', date: { $gte: today, $lt: tomorrow } })
+  .then((results) => {
+    console.log(results[0]);
+    console.log(results[0].date.getDate());
+    console.log(results[0].date.getMonth());
+    console.log(results[0].date.getFullYear());
+    res.json(results);
+  })
+  .catch((err) => {
+    console.log('err in get special by date');
+    res.status(500).json({ err: 'error' });
+  });
+};
+
+export const collisTestGet = (req, res) => {
+  const now = Date.now();
+  const currDate = now.getDate();
+  const currMonth = now.getMonth();
+  const currYear = now.getFullYear();
+  const today = Date(currYear, currMonth, currDate);
+  const tomorrow = Date(currYear, currMonth, currDate + 1);
+
+  Special.find({ location: 'collis', date: { $gte: today, $lt: tomorrow } })
+  .then((results) => {
+    console.log(results[0]);
+    console.log(results[0].date.getDate());
+    console.log(results[0].date.getMonth());
+    console.log(results[0].date.getFullYear());
+    res.json(results);
+  })
+  .catch((err) => {
+    console.log('err in get special by date');
+    res.status(500).json({ err: 'error' });
+  });
+};
