@@ -43,10 +43,17 @@ export const findSpecialsByDateAndLocation = (req, res) => {
 export const collisGet = (req, res) => {
   Special.find({ location: 'collis' })
   .then((results) => {
-    console.log(results[0]);
-    console.log(results[0].date.getDate());
-    console.log(results[0].date.getMonth());
-    console.log(results[0].date.getFullYear());
+    res.json(results);
+  })
+  .catch((err) => {
+    console.log('err in get special by date');
+    res.status(500).json({ err: 'error' });
+  });
+};
+
+export const focoGet = (req, res) => {
+  Special.find({ location: 'foco' })
+  .then((results) => {
     res.json(results);
   })
   .catch((err) => {

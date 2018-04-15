@@ -14,6 +14,9 @@ router.route('/test')
 router.route('/collis')
 .get(Specials.collisGet);
 
+router.route('/foco')
+.get(Specials.focoGet);
+
 router.route('/collistoday')
 .get(Specials.collisTodayGet);
 
