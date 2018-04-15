@@ -79,12 +79,13 @@ export const collisTodayGet = (req, res) => {
 
 export const collisTestGet = (req, res) => {
   const now = Date.now();
+  // const currDate = now.getDate();
   const currMonth = now.getMonth();
   const currYear = now.getFullYear();
   const today = new Date(currYear, currMonth, 16);
   const tomorrow = new Date(currYear, currMonth, 17);
 
-  Special.find({ location: 'collis', date: { $gte: today, $lt: tomorrow } })
+  Special.find($and: [{ location: 'collis', date: { $gte: today, $lt: tomorrow } }])
   .then((results) => {
     console.log(results[0]);
     console.log(results[0].date.getDate());
