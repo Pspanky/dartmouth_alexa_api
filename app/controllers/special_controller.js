@@ -97,9 +97,10 @@ export const collisTestGet = (req, res) => {
     let i = 0;
     while (i < results.length) {
       const tempDate = results[i];
-      if ((tempDate.getDate() !== 16) || (tempDate.getMonth() !== 4)) {
-        results.splice(i, 1);
-      }
+      // if ((tempDate.getDate() !== 16) || (tempDate.getMonth() !== 4)) {
+      //  results.splice(i, 1);
+      // }
+      console.log(tempDate);
       i += 1;
     }
     res.json(results);
