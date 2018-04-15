@@ -78,9 +78,9 @@ export const collisTodayGet = (req, res) => {
 };
 
 export const collisTestGet = (req, res) => {
-  const now = Date.now();
-  const currDate = now.getDate();
-  const currMonth = now.getMonth();
+  // const now = Date.now();
+  // const currDate = now.getDate();
+  // const currMonth = now.getMonth();
   // const currYear = now.getFullYear();
   // const today = new Date(currYear, currMonth, 16);
   // const tomorrow = new Date(currYear, currMonth, 17);
@@ -90,7 +90,7 @@ export const collisTestGet = (req, res) => {
     let i = 0;
     while (i < results.length) {
       const tempDate = results[i];
-      if ((tempDate.getDate() !== currDate) || (tempDate.getMonth() !== currMonth)) {
+      if ((tempDate.getDate() !== 16) || (tempDate.getMonth() !== 4)) {
         results.splice(i, 1);
       }
       i += 1;
